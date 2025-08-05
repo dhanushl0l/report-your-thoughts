@@ -15,13 +15,11 @@ public class ThoughtController {
         this.repo = repo;
     }
 
-    // health check
     @GetMapping("/health")
     public String health() {
         return "OK";
     }
 
-    // list all
     @GetMapping("/get")
     public List<Thought> getAll() {
         return repo.findAll();
@@ -49,7 +47,6 @@ public class ThoughtController {
     }
 
 
-    // delete by id
     @PostMapping("/delete")
     public ResponseEntity<String> delete(@RequestParam Long id) {
         if (repo.existsById(id)) {
@@ -59,5 +56,3 @@ public class ThoughtController {
         return ResponseEntity.status(404).body("Not found");
     }
 }
-
-

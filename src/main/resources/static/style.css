@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: black;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.glass-box {
+    background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+}
+
+
+ .input {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 10px;
+     margin-top: 40px;
+ }
+
+#nameInput {
+    color: #ffffff;
+    width: 90%;
+    height: 40px;
+    border-radius: 4px;
+    margin: 10px auto;
+    display: block;
+    background-color: transparent;
+    padding: 5px 10px;
+    border: 1px solid #ffffff;
+    font-size: 18px;
+    font-weight: normal;
+    outline: none;
+}
+
+ #nameInput::-webkit-scrollbar {
+     width: 10px;
+     height: 100%;
+ }
+
+ #nameInput::-webkit-scrollbar-track {
+     background: transparent;
+ }
+
+ #nameInput::-webkit-scrollbar-thumb {
+     background-color: rgb(0, 0, 0);
+ }
+
+
+#message {
+    color: #ffffff;
+    width: 90%;
+    height: 150px;
+    resize: none;
+    border-radius: 4px;
+    margin: 10px auto;
+    display: block;
+    background-color: transparent;
+    padding: 5px 10px;
+    border: 1px solid #ffffff;
+    font-size: 20px;
+    font-weight: normal;
+    outline: none;
+    overflow-y: auto;
+    vertical-align: top; /* ensures alignment inside forms */
+}
+
+/* Scrollbar styling */
+#message::-webkit-scrollbar {
+    width: 10px;
+    height: 100%;
+}
+
+#message::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#message::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 0, 0);
+}
+
+#message {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 255, 255) transparent;
+}
+
+ /*.button {*/
+ /*    padding: 10px 20px;*/
+ /*    font-size: 16px;*/
+ /*    cursor: pointer;*/
+ /*}*/
+
+
+ .button {
+     appearance: button;
+     background-color: #ffffff;
+     background-image: none;
+     border: 1px solid #ffffff;
+     border-radius: 4px;
+     box-shadow: #000000 4px 4px 0 0, #ffffff 4px 4px 0 1px;
+     box-sizing: border-box;
+     color: #000000;
+     cursor: pointer;
+     display: inline-block;
+     font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+     font-size: 14px;
+     font-weight: 400;
+     line-height: 20px;
+     margin: 0 5px 10px 0;
+     overflow: visible;
+     padding: 12px 40px;
+     text-align: center;
+     text-transform: none;
+     touch-action: manipulation;
+     user-select: none;
+     -webkit-user-select: none;
+     vertical-align: middle;
+     white-space: nowrap;
+ }
+
+ .button:focus {
+     outline: none;
+     text-decoration: none;
+ }
+
+ .button:hover {
+     text-decoration: none;
+ }
+
+ .button:active {
+     box-shadow: rgba(255, 255, 255, 0.125) 0 3px 5px inset;
+     outline: 0;
+ }
+
+ .button:not([disabled]):active {
+     box-shadow: #000000 2px 2px 0 0, #ffffff 2px 2px 0 1px;
+     transform: translate(2px, 2px);
+ }
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+#messagesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+#messagesList li {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    backdrop-filter: blur(6px);
+}
+
+.msg-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 8px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.text {
+    font-size: 16px;
+    word-break: break-word;
+    padding: 4px 0;
+    width: 100%;
+}
+
+.actions {
+    margin-top: 6px;
+}
+
+.edit-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffb400;
+    color: #000;
+    cursor: pointer;
+    transition: filter .2s;
+}
+
+.edit-btn:hover {
+    filter: brightness(1.1);
+}

@@ -9,8 +9,8 @@ public class Thought {
     private Long id;
 
     private String name;
+    @Column(length = 1000)
     private String text;
-
     public Thought() {}
 
     public Thought(String name, String text) {

@@ -4,164 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thoughts</title>
-    <style>
-            :root {
-                --bg-color: rgba(0, 0, 0, 0.4);
-                --text-color: #fff;
-                --box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
-                --glass-border: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-        body {
-            margin: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: linear-gradient(135deg, #c3cfe2, #e2e2e2);
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding: 20px;
-            color: var(--text-color);
-            transition: background 0.3s ease;
-        }
-
-        h1, h2 {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .glass-box {
-            background: var(--bg-color);
-            border-radius: 15px;
-            padding: 20px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: var(--box-shadow);
-            border: var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #007bff;
-            color: white;
-            border: none;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 10px 0;
-            transition: background 0.2s ease;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .edit-btn {
-            padding: 6px 12px;
-            font-size: 14px;
-            border: none;
-            border-radius: 6px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-        }
-
-        .edit-btn:hover {
-            background-color: #1c7c31;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="glass-box">
     <h1>Enter your thoughts</h1>
-    <input type="text" id="nameInput" placeholder="Your name" />
-    <input type="text" id="messageInput" placeholder="Your thought..." />
-    <button id="sendBtn">Send</button>
+    <div class="input">
+        <label for="nameInput"></label>
+        <input type="text" id="nameInput" placeholder="Your name" />
+
+        <label for="message"></label>
+        <textarea id="message" placeholder="Your thought..."></textarea>
+
+        <button class="button" id="sendBtn">Send</button>
+    </div>
 
     <h2>All Thoughts:</h2>
-    <ul id="messagesList"></ul>
+    <div class="list-wrapper">
+        <ul id="messagesList"></ul>
+    </div>
 </div>
 
-<script>
-    async function loadMessages() {
-        const res = await fetch('/get');
-        const messages = await res.json();
-        const list = document.getElementById('messagesList');
-        list.innerHTML = '';
-        messages.forEach(msg => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span><strong>${msg.name}</strong>: ${msg.text}</span>
-                <button class="edit-btn" onclick="editMessage(${msg.id})">Edit</button>
-            `;
-            list.appendChild(li);
-        });
-    }
-
-    async function sendMessage() {
-        const name = document.getElementById('nameInput').value.trim();
-        const message = document.getElementById('messageInput').value.trim();
-        if (!name || !message) {
-            alert("Name and thought required");
-            return;
-        }
-
-        const res = await fetch("/send", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, message })
-        });
-
-        if (res.ok) {
-            document.getElementById('messageInput').value = '';
-            loadMessages();
-        } else {
-            alert("Failed to send.");
-        }
-    }
-
-    async function editMessage(id) {
-        const newText = prompt("Edit your thought:");
-        if (newText === null) return;
-        await fetch("/edit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id, message: newText })
-        });
-        loadMessages();
-    }
-
-    document.getElementById("sendBtn").addEventListener("click", sendMessage);
-    loadMessages();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
